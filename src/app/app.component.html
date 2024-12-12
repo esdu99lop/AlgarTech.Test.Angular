@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span>AlgarTech Test (Crud App)</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  <a mat-tab-link *ngFor="let link of links"
+     [routerLink]="link.path"
+     routerLinkActive="active-link"
+     [routerLinkActiveOptions]="{ exact: true }">
+     {{link.label}}
+  </a>
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+
+<router-outlet></router-outlet>

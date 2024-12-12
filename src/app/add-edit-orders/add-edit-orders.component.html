@@ -1,0 +1,50 @@
+<div mat-dialog-title>
+  <h1>Orders Form</h1>
+</div>
+
+<form [formGroup]="ordersForm" (ngSubmit)="orderFormSubmit()">
+  <div mat-dialog-content class="content">
+
+    <div class="row">
+      <mat-form-field>
+        <mat-label>Client Identification</mat-label>
+        <input matInput type="text" formControlName="clientIdentification" required>
+        <mat-error *ngIf="ordersForm.get('clientIdentification')?.hasError('required')">
+          Required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Client Address</mat-label>
+        <input matInput type="text" formControlName="clientAddress" required>
+        <mat-error *ngIf="ordersForm.get('clientAddress')?.hasError('required')">
+          Required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="fill">
+        <mat-label>Select Product</mat-label>
+        <mat-select (selectionChange)="addProductToForm($event.value)">
+          <mat-option *ngFor="let product of productsList" [value]="product">
+            {{ product.productName }} - {{ product.price | currency }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div formArrayName="products">
+        <div *ngFor="let product of products.controls; let i = index" [formGroupName]="i">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <strong>Total: {{ total | currency }}</strong>
+    </div>
+
+  </div>
+  <div mat-dialog-actions class="actions">
+    <button mat-raised-button [mat-dialog-close]="false" type="button">Cancel</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="ordersForm.invalid">Save</button>
+  </div>
+</form>
