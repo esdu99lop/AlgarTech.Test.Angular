@@ -29,3 +29,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+# Navigation and flow
+
+Click in Orders Summary Tab for look all orders
+Click in Products Summary Tab for look all products
+
+Click Add New Product Button for add new products
+Click Add New Order Button for add new orders
